@@ -1,23 +1,47 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useState } from 'react'
+import LoginForm from './components/Login'
 
 function App() {
+  const testUser = {
+    phoneNumber: "123",
+    password: "test"
+  }
+
+  const [user, setUser] = useState({username: "", phoneNumber: "", password: ""});
+  const [error, setError] = useState("");
+
+  const Login = details => {
+    console.log(details);
+
+    if(details.phoneNumber == testUser.phoneNumber && details.password == testUser.password) {
+      console.log("Logged in");
+      setUser({
+        username: details.username,
+        phoneNumber: details.phoneNumber
+      });
+    } else {
+     console.log("Details do not match user");
+     setError("Details do not match user");
+    }
+  }
+
+  const Logout = () => {
+    console.log("Logged out");
+    setUser({ username: "", phoneNumber: ""});
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {(user.phoneNumber != "") ? (
+        <div className= "welcome">
+          <h2>Welcome, <span>{user.username}</span></h2>
+          <button onClick= {Logout}>Logout</button>
+        </div>
+      ) : (
+        <LoginForm Login={Login} error={error}/>
+      )}
     </div>
   );
 }
