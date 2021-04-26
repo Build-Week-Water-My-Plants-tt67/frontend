@@ -80,7 +80,6 @@ const App = () => {
   return (
     <>
       <div>
-      
           <SignUp 
               values={formValues}
               change={inputChange}
