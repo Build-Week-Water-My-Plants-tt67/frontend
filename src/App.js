@@ -23,6 +23,33 @@ const App = () => {
     const [formValues, setFormValues] = useState(initialFormValues); 
     const [formErrors, setFormErrors] = useState(initialFormErrors); 
     const [disabled, setDisabled] = useState(initialDisabled); 
+    const [user, setUser] = useState({username: "", phoneNumber: "", password: ""});
+    const [error, setError] = useState("");
+
+    const testUser = {
+    phoneNumber: "123",
+    password: "test"
+    }
+    
+  const Login = details => {
+    console.log(details);
+
+    if(details.phoneNumber == testUser.phoneNumber && details.password == testUser.password) {
+      console.log("Logged in");
+      setUser({
+        username: details.username,
+        phoneNumber: details.phoneNumber
+      });
+    } else {
+     console.log("Details do not match user");
+     setError("Details do not match user");
+    }
+  }
+
+  const Logout = () => {
+    console.log("Logged out");
+    setUser({ username: "", phoneNumber: ""});
+  }
       
     
       const postNewSignUp = (newSignUp) => {
@@ -78,7 +105,15 @@ const App = () => {
 
      
   return (
-    <>
+    <div className="App">
+      {(user.phoneNumber != "") ? (
+        <div className= "welcome">
+          <h2>Welcome, <span>{user.username}</span></h2>
+          <button onClick= {Logout}>Logout</button>
+        </div>
+      ) : (
+        <LoginForm Login={Login} error={error}/>
+      )}
       <div>
           <SignUp 
               values={formValues}
@@ -87,9 +122,10 @@ const App = () => {
               disabled={disabled}
               errors={formErrors}
               />
+       </div>
       </div>
-      
     </>
+
   );
 };
 export default App;
