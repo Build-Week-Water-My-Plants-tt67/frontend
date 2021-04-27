@@ -27,7 +27,7 @@ export default function Form (props) {
         </div>
         <div>
         <h3>{values.username}'s Profile</h3>
-        <label><h4>Update Phone Number: {values.phoneNumber} </h4>
+        <label><h4>Update Phone Number: </h4>
           <input
             type="number"
             value={values.phoneNumber}
@@ -39,7 +39,7 @@ export default function Form (props) {
           />
         </label>
 
-        <label><h4>Update Password: {values.password} </h4>
+        <label><h4>Update Password: </h4>
           <input
             type="password"
             value={values.password}
