@@ -29,7 +29,7 @@ export default function Form (props) {
         <h3>{values.username}'s Profile</h3>
         <label><h4>Update Phone Number: {values.phoneNumber} </h4>
           <input
-            type="text"
+            type="number"
             value={values.phoneNumber}
             onChange={onChange}
             name="phoneNumber"
