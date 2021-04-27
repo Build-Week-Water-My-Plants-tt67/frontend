@@ -7,13 +7,13 @@ import axios from 'axios';
 const initialFormValues = {
     nickname: "",
     species: "",
-    h2oFrequency: "",
+    h20Frequency: "",
     image: "",
   };
   const initialFormErrors = {
     nickname: "",
     species: "",
-    h2oFrequency: "",
+    h20Frequency: "",
     image: "",
   };
   const initialCreatePlant = [];
@@ -66,7 +66,7 @@ const formSubmit = () => {
     const newPlant = {
       nickname: formValues.nickname.trim(),
       species: formValues.species.trim(),
-      h2oFrequency: formValues.h2oFrequency.trim(),
+      h20Frequency: formValues.h20Frequency.trim(),
     };
     postNewPlant(newPlant);
   };
@@ -100,7 +100,7 @@ const formSubmit = () => {
             <em>
           <div>{formErrors.nickname}</div>
           <div>{formErrors.species}</div>
-          <div>{formErrors.h2oFrequency}</div>
+          <div>{formErrors.h20Frequency}</div>
           </em>
         </div>
     <div>
@@ -129,7 +129,7 @@ const formSubmit = () => {
         </label>
 
       <label><h4>Watering Frequency: </h4>
-          <select value={formValues.h2oFrequency} name="h2oFrequency" onChange={onChange} id="frequency-dropdown">
+          <select value={formValues.h20Frequency} name="h20Frequency" onChange={onChange} id="frequency-dropdown">
             <option value="">-- Select --</option>
             <option value="daily">Daily</option>
             <option value="twicePerWeek">Twice Per Week</option>

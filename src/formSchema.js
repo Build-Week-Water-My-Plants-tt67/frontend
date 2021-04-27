@@ -26,9 +26,9 @@ export default yup.object().shape({
     .required("Species is required")
     .min(6, "species must be at least 6 characters"),
 
-  h2oFrequency: yup
+  h20Frequency: yup
     .string()
-    .required("Username is required")
+    .required("Watering Frequency is required")
     .oneOf(["daily", "twicePerWeek", "weekly"], "watering frequency is required"),
 
 
