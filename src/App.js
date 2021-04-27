@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
-import SignUp from './SignUp';
-import schema from './formSchema'
+import SignUp from './components/SignUp';
+import LoginForm from './components/Login';
+import schema from './formSchema';
 import * as yup from 'yup';
 import axios from 'axios';
 
@@ -114,7 +115,7 @@ const App = () => {
       ) : (
         <LoginForm Login={Login} error={error}/>
       )}
-      <div>
+        <div>
           <SignUp 
               values={formValues}
               change={inputChange}
@@ -123,8 +124,7 @@ const App = () => {
               errors={formErrors}
               />
        </div>
-      </div>
-    </>
+    </div>
 
   );
 };
