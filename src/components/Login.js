@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export default function LoginForm({ Login, error }) {
-    const [details, setDetails] = useState({username: "", phoneNumber: "", password: ""});
+    const [details, setDetails] = useState({username: "", password: ""});
 
     const submitHandler = evt => {
         evt.preventDefault();
@@ -22,16 +22,6 @@ export default function LoginForm({ Login, error }) {
                         onChange= {evt => 
                             setDetails({...details, username: evt.target.value})} 
                             value= {details.username}/>
-                </div>
-                <div className= "form-group">
-                    <label>Phone number: </label>
-                    <input
-                        type="text"
-                        name="phoneNumber"
-                        placeholder= "Enter a phone number..."
-                         onChange= {evt => 
-                            setDetails({...details, phoneNumber: evt.target.value})} 
-                            value= {details.phoneNumber}/>
                 </div>
                 <div className= "form-group">
                     <label>Password: </label>
