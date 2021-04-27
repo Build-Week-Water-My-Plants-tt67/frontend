@@ -4,6 +4,7 @@ import schema from './formSchema'
 import * as yup from 'yup';
 import axios from 'axios';
 import LoginForm from './components/Login'
+import CreatePlant from "./components/CreatePlant";
 
 const initialFormValues = {
   username: "",
@@ -124,6 +125,7 @@ const App = () => {
               errors={formErrors}
               />
        </div>
+       <CreatePlant/>
       </div>
 
   );
