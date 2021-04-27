@@ -29,14 +29,14 @@ const App = () => {
     const [error, setError] = useState("");
 
     const testUser = {
-    phoneNumber: "123",
+    username: "test",
     password: "test"
     }
     
   const Login = details => {
     console.log(details);
 
-    if(details.phoneNumber === testUser.phoneNumber && details.password === testUser.password) {
+    if(details.username == testUser.username && details.password == testUser.password) {
       console.log("Logged in");
       setUser({
         username: details.username,
