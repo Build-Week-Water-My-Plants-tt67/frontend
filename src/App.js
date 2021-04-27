@@ -4,6 +4,7 @@ import schema from './formSchema'
 import * as yup from 'yup';
 import axios from 'axios';
 import LoginForm from './components/Login'
+import CreatePlant from "./components/CreatePlant";
 
 const initialFormValues = {
   username: "",
@@ -35,7 +36,7 @@ const App = () => {
   const Login = details => {
     console.log(details);
 
-    if(details.phoneNumber == testUser.phoneNumber && details.password == testUser.password) {
+    if(details.phoneNumber === testUser.phoneNumber && details.password === testUser.password) {
       console.log("Logged in");
       setUser({
         username: details.username,
@@ -124,6 +125,7 @@ const App = () => {
               errors={formErrors}
               />
        </div>
+       <CreatePlant/>
       </div>
 
   );
