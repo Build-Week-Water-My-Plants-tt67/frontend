@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import { getPlants } from '../store/actions';
 
 const UserDashboard = (props) => {
-  const { plants, isCallingAPI, error, user_id, username } = props;
+  const { plants, isCallingAPI, error, user_id, username, getPlants } = props;
   const { push } = useHistory();
 
   useEffect(()=>{
     getPlants(`https://water-my-plants-tt67.herokuapp.com/api/plants/${user_id}`);
-  }, []);
+  }, [user_id]);
 
   const handleClick = (ev, plant) => {
     ev.preventDefault();
-    push(`/dashboard/${user_id}/${plant.id}`);
+    push(`/${user_id}/${plant.plant_id}`);
   }
 
   return (
