@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
-import SignUp from './SignUp';
+import SignUp from './components/SignUp';
 import schema from './formSchema'
 import * as yup from 'yup';
 import axios from 'axios';
+import LoginForm from './components/Login'
 
 const initialFormValues = {
   username: "",
@@ -124,7 +125,6 @@ const App = () => {
               />
        </div>
       </div>
-    // </>
 
   );
 };
