@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import LoginForm from './components/Login'
 import EditUser from './components/EditUser'
+import CreatePlant from "./components/CreatePlant";
 
 const initialFormValues = {
   username: "",
@@ -29,14 +30,14 @@ const App = () => {
     const [error, setError] = useState("");
 
     const testUser = {
-    phoneNumber: "123",
+    username: "test",
     password: "test"
     }
     
   const Login = details => {
     console.log(details);
 
-    if(details.phoneNumber == testUser.phoneNumber && details.password == testUser.password) {
+    if(details.username == testUser.username && details.password == testUser.password) {
       console.log("Logged in");
       setUser({
         username: details.username,
@@ -137,6 +138,7 @@ const App = () => {
               errors={formErrors}
               />
        </div>
+       <CreatePlant/>
       </div>
 
   );
