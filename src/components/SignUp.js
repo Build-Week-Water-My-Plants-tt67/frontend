@@ -20,7 +20,7 @@ const initialSignup = [];
 const initialDisabled = true;
 
 
-const Form = () => {
+export default function Form() {
 
   const [formValues, setFormValues] = useState(initialFormValues); 
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -150,5 +150,3 @@ const Form = () => {
   </>
   )
 }
-
-export default Form;

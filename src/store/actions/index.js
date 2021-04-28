@@ -1,4 +1,4 @@
-import axiosWithAuth from '../utils/axiosWithAuth';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const USER_LOGIN_START = "USER_LOGIN_START";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
@@ -8,6 +8,7 @@ export const userLogin = (URL, credentials) => dispatch => {
   axiosWithAuth
     .post(URL, credentials)
     .then( res => {
+      console.log(res.data);
       dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data});
     })
     .catch( err => {
