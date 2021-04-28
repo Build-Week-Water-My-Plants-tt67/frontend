@@ -59,6 +59,23 @@ export const getPlants = (URL) => dispatch => {
     })
 };
 
+export const SET_CURRENT_PLANT_START = "SET_CURRENT_PLANT_START";
+export const SET_CURRENT_PLANT_SUCCESS = "SET_CURRENT_PLANT_SUCCESS";
+export const SET_CURRENT_PLANT_FAILURE = "SET_CURRENT_PLANT_FAILURE";
+export const setCurrentPlant = (URL) => dispatch => {
+  dispatch({ type: SET_CURRENT_PLANT_START });
+  axiosWithAuth
+    .get(URL)
+    .then( res => {
+      console.log(res.data);
+      dispatch({ type: SET_CURRENT_PLANT_SUCCESS, payload: res.data});
+    })
+    .catch( err => {
+      console.log(err);
+      dispatch({ type: SET_CURRENT_PLANT_FAILURE, payload: err});
+    })
+};
+
 export const ADD_PLANT_START = "ADD_PLANT_START";
 export const ADD_PLANT_SUCCESS = "ADD_PLANT_SUCCESS";
 export const ADD_PLANT_FAILURE = "ADD_PLANT_FAILURE";
@@ -82,12 +99,14 @@ export const EDIT_PLANT_START = "EDIT_PLANT_START";
 export const EDIT_PLANT_SUCCESS = "EDIT_PLANT_SUCCESS";
 export const EDIT_PLANT_FAILURE = "EDIT_PLANT_FAILURE";
 export const editPlant = (URL, plant) => dispatch => {
+  const push = useHistory();
   dispatch({ type: EDIT_PLANT_START });
   axiosWithAuth
     .put(URL, plant)
     .then( res => {
       console.log(res.data);
       dispatch({ type: EDIT_PLANT_SUCCESS, payload: res.data});
+      push(`/${res.data.user_id}/${res.data.plant_id}`);
     })
     .catch( err => {
       console.log(err);
