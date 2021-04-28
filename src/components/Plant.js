@@ -1,27 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axiosWithAuth from 'axios';
-import { deletePlant } from '../store/actions';
+import { deletePlant, setCurrentPlant } from '../store/actions';
 
 const Plant = (props) => {
 
-  const [plant, setPlant] = useState({});
-  const { isCallingAPI, error, deletePlant } = props;
-  const { user_id, plant_id } = useParams();
+  const { user_id, plant, plant_id, setCurrentPlant, isCallingAPI, error, deletePlant } = props;
   const { push } = useHistory();
 
   useEffect(()=>{
-    axiosWithAuth
-      .get(`https://water-my-plants-tt67.herokuapp.com/api/plants/${plant_id}`)
-      .then(res=>{
-        console.log(res.data);
-        setPlant(res.data);
-      })
-      .catch(err=>{
-        console.log(err);
-      })
-  }, [plant_id]);
+    setCurrentPlant(`https://water-my-plants-tt67.herokuapp.com/api/plants/${plant_id}`);
+  }, []);
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -65,9 +54,12 @@ const Plant = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    user_id: state.user.user.user_id,
+    plant: state.plants.currentPlant,
+    plant_id: state.plants.currentPlant.plant_id,
     isCallingAPI: state.plants.isCallingAPI,
     error: state.plants.error
   }
 }
 
-export default connect(mapStateToProps, { deletePlant })(Plant);
+export default connect(mapStateToProps, { setCurrentPlant, deletePlant })(Plant);
