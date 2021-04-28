@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { userLogin } from '../store/actions';
 
 const LoginForm = (props) => {
+
+    const { push } = useHistory();
     const [details, setDetails] = useState({username: "", password: ""});
     const { userLogin, isCallingAPI, error } = props;
 
     const submitHandler = evt => {
         evt.preventDefault();
         userLogin("https://water-my-plants-tt67.herokuapp.com/api/users/login", details);
+        push("/user/plants");
     }
 
     return (
