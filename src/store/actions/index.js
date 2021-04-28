@@ -39,6 +39,7 @@ export const editUser = (URL, user) => dispatch => {
 
 export const USER_LOGOUT = "USER_LOGOUT";
 export const userLogout = () => {
+  window.localStorage.removeItem('token');
   return { type: USER_LOGOUT }
 };
 
