@@ -105,7 +105,8 @@ export default function Form() {
                 </em>
               </div>
               <div>
-              <label><h4>Username: </h4>
+                <h1>Sign Up With Us Today!</h1>
+              <label>Username:
                 <input
                   type="text"
                   value={formValues.username}
@@ -116,8 +117,8 @@ export default function Form() {
                   maxLength="30"
                 />
               </label>
-
-              <label><h4>Phone Number: </h4>
+                <br/>
+              <label>Phone Number:
                 <input
                   type="text"
                   value={formValues.phoneNumber}
@@ -128,8 +129,8 @@ export default function Form() {
                   maxLength="30"
                 />
               </label>
-
-              <label><h4>Password: </h4>
+              <br/>
+              <label>Password: 
                 <input
                   type="password"
                   value={formValues.password}

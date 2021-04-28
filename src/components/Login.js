@@ -2,6 +2,33 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { userLogin } from '../store/actions';
+import styled from 'styled-components';
+
+const StyledLogin = styled.div`
+  width: 50%;
+  display: flex;
+  justify-content: left;
+  color: white;
+
+
+  button{
+    background-color: #ddd;
+    color: #333;
+    font-family: sans-serif;
+    font-size: .8rem;
+    padding: 3% 7%;
+    border-radius: 10px;
+    font-weight: bold;
+
+        &:hover {
+        background-color: rgba(104, 104, 104, 0.8);
+        color: white;
+        transition: all 1s ease-in-out;
+        }
+ 
+  }
+`
+
 
 const LoginForm = (props) => {
 
@@ -20,8 +47,8 @@ const LoginForm = (props) => {
         { (isCallingAPI) ? (<h2>Please wait, checking credentials</h2>): 
             (
             <form onSubmit={submitHandler}>
-                <div className= "form-inner">
-                    <h2>Login</h2>
+                <StyledLogin>
+                   
                     {(error !== "") ? (<div className= "error">{error}</div>) : ""}
                     <div className= "form-group">
                         <label>Username: </label>
@@ -43,10 +70,8 @@ const LoginForm = (props) => {
                                 setDetails({...details, password: evt.target.value})} 
                                 value= {details.password}/>
                     </div>
-                    <input
-                        type="submit"
-                        value= "Submit"/>
-                </div>
+                    <button id="submit" type="submit">Login</button>
+                </StyledLogin>
             </form>
             )}
       </div>
