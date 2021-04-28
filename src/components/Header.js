@@ -13,15 +13,15 @@ const Header = (props) => {
         { (localStorage.getItem('token')) ? 
           (
             <ul>
-              <li><NavLink to = {`${user_id}/dashboard`}>My Dashboard</NavLink></li>
-              <li><NavLink to = {`${user_id}/addplant`}>Add Plant</NavLink></li>
-              <li><NavLink to = {`${user_id}/edituser`}>Edit Profile</NavLink></li>
-              <li ><NavLink onClick={userLogout} to = '/home'>Logout</NavLink></li>
+              <li><NavLink to = {`/plant`}>My Dashboard</NavLink></li>
+              <li><NavLink to = {`/plant/create`}>Add Plant</NavLink></li>
+              <li><NavLink to = {`/user/edit`}>Edit Profile</NavLink></li>
+              <li ><NavLink onClick={userLogout} to = '/'>Logout</NavLink></li>
             </ul>
           ) : 
           (
             <ul>
-              <li><NavLink to = '/home'>Home</NavLink></li>
+              {/* <li><NavLink to = '/home'>Home</NavLink></li> */}
               <li><NavLink to = '/signup'>Sign Up</NavLink></li>
               <li><NavLink to = '/login'>Login</NavLink></li>
             </ul>
