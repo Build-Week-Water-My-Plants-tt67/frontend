@@ -1,4 +1,4 @@
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 
 export const USER_LOGIN_START = "USER_LOGIN_START";
