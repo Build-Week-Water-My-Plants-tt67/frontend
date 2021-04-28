@@ -6,7 +6,7 @@ import EditUser from './components/EditUser';
 import CreatePlant from "./components/CreatePlant";
 import EditPlant from "./components/EditPlant";
 import Header from "./components/Header";
-import { Redirect, Route } from "react-router";
+import { Redirect, Route, Switch } from "react-router";
 import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
