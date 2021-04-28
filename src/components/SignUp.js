@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
-import schema from './formSchema';
+import schema from './schema/formSchema';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
