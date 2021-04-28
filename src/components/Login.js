@@ -8,7 +8,7 @@ const LoginForm = (props) => {
 
     const submitHandler = evt => {
         evt.preventDefault();
-        userLogin(details);
+        userLogin("https://water-my-plants-tt67.herokuapp.com/users/login", details);
     }
 
     return (

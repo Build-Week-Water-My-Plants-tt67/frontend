@@ -1,15 +1,18 @@
 import axiosWithAuth from '../../utils/axiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 export const USER_LOGIN_START = "USER_LOGIN_START";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_FAILURE = "USER_LOGIN_FAILURE";
 export const userLogin = (URL, credentials) => dispatch => {
+  const push = useHistory();
   dispatch({ type: USER_LOGIN_START });
   axiosWithAuth
     .post(URL, credentials)
     .then( res => {
       console.log(res.data);
       dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data});
+      push(`/${res.data.user_id}/dashboard`);
     })
     .catch( err => {
       console.log(err);
