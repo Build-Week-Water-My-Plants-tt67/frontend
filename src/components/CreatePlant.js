@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import schema from '../formSchema'
 import * as yup from 'yup';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { addPlant } from '../store/actions';
 
 
 const initialFormValues = {
@@ -9,37 +10,25 @@ const initialFormValues = {
     species: "",
     h20Frequency: "",
     image: "",
-  };
-  const initialFormErrors = {
-    nickname: "",
-    species: "",
-    h20Frequency: "",
-    image: "",
-  };
-  const initialCreatePlant = [];
-  const initialDisabled = true;
+};
 
-export default function CreatePlant () {
+const initialFormErrors = {
+  nickname: "",
+  species: "",
+  h20Frequency: "",
+  image: "",
+};
 
-    const [createPlant, setCreatePlant] = useState(initialCreatePlant);
-    const [formValues, setFormValues] = useState(initialFormValues); 
-    const [formErrors, setFormErrors] = useState(initialFormErrors); 
-    const [disabled, setDisabled] = useState(initialDisabled); 
+const initialDisabled = true;
 
-const postNewPlant= (newPlant) => {
-    axios
-      .post("https://reqres.in/api/orders", newPlant)
-      .then((res) => {
-        setCreatePlant([res.data, ...createPlant]);
-        setFormValues(initialFormValues);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+const CreatePlant = (props) => {
 
-const inputChange = (name, value) => {
+  const { user_id, addPlant } = props;
+  const [formValues, setFormValues] = useState(initialFormValues); 
+  const [formErrors, setFormErrors] = useState(initialFormErrors); 
+  const [disabled, setDisabled] = useState(initialDisabled); 
+
+  const inputChange = (name, value) => {
     yup
       .reach(schema, name) 
       .validate(value) 
@@ -62,20 +51,21 @@ const inputChange = (name, value) => {
     });
   };
 
-const formSubmit = () => {
+  const formSubmit = () => {
     const newPlant = {
       nickname: formValues.nickname.trim(),
       species: formValues.species.trim(),
       h20Frequency: formValues.h20Frequency.trim(),
+      image: formValues.image
     };
-    postNewPlant(newPlant);
+    addPlant(`https://water-my-plants-tt67.herokuapp.com/api/plants/${user_id}`, newPlant);
   };
     
-      useEffect(() => {
-        schema.isValid(formValues).then((valid) => {
-          setDisabled(!valid);
-        });
-      }, [formValues]);
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
 
 
   const onChange = evt => {
@@ -83,10 +73,10 @@ const formSubmit = () => {
     inputChange(name, value)
   }
 
-    const onSubmit = evt => {
-        evt.preventDefault()
-        formSubmit()
-    }
+  const onSubmit = evt => {
+    evt.preventDefault();
+    formSubmit();
+  }
 
   return (
     <>
@@ -152,3 +142,13 @@ const formSubmit = () => {
 </>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user_id: state.user.user.user_id,
+    isCallingAPI: state.plants.isCallingAPI,
+    error: state.plants.error
+  }
+}
+
+export default connect(mapStateToProps, { addPlant })(CreatePlant);

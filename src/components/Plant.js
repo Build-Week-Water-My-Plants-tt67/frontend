@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axiosWithAuth from 'axios';
-import { deletePlants } from '../store/actions';
+import { deletePlant } from '../store/actions';
 
 const Plant = (props) => {
 
   const [plant, setPlant] = useState({});
-  const { isCallingAPI, error, deletePlants } = props;
+  const { isCallingAPI, error, deletePlant } = props;
   const { user_id, plant_id } = useParams();
   const { push } = useHistory();
 
@@ -30,7 +30,7 @@ const Plant = (props) => {
   
   const handleDelete = (e) => {
     e.preventDefault();
-    deletePlants(`https://water-my-plants-tt67.herokuapp.com/api/plants/${plant_id}`);
+    deletePlant(`https://water-my-plants-tt67.herokuapp.com/api/plants/${plant_id}`);
     push(`/${user_id}/dashboard`);
   }
 
@@ -70,4 +70,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { deletePlants })(Plant);
+export default connect(mapStateToProps, { deletePlant })(Plant);
