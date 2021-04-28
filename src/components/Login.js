@@ -4,11 +4,11 @@ import { userLogin } from '../store/actions';
 
 const LoginForm = (props) => {
     const [details, setDetails] = useState({username: "", password: ""});
-    const { isCallingAPI, error } = props;
+    const { userLogin, isCallingAPI, error } = props;
 
     const submitHandler = evt => {
         evt.preventDefault();
-        userLogin("https://water-my-plants-tt67.herokuapp.com/users/login", details);
+        userLogin("https://water-my-plants-tt67.herokuapp.com/api/users/login", details);
     }
 
     return (
