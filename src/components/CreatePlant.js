@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import schema from './schema/formSchema';
+import schema from './schema/formSchema2';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { addPlant } from '../store/actions';
@@ -16,7 +16,7 @@ const initialFormErrors = {
   nickname: "",
   species: "",
   h20Frequency: "",
-  image: "",
+  
 };
 
 const initialDisabled = true;
@@ -56,7 +56,7 @@ const CreatePlant = (props) => {
       nickname: formValues.nickname.trim(),
       species: formValues.species.trim(),
       h20Frequency: formValues.h20Frequency.trim(),
-      image: formValues.image
+      image: formValues.image.trim(),
     };
     addPlant(`https://water-my-plants-tt67.herokuapp.com/api/plants/${user_id}`, newPlant);
   };
