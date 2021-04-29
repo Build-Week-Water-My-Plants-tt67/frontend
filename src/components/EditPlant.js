@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import schema from '../formSchema'
+import schema from './schema/formSchema';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { editPlant } from '../store/actions';
