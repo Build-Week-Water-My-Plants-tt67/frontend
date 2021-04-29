@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { userLogin } from '../store/actions';
+import { userLoginSuccess, userLoginFailure, userLoginStart } from '../store/actions';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 
 const StyledLogin = styled.div`
@@ -34,12 +35,23 @@ const LoginForm = (props) => {
 
     const { push } = useHistory();
     const [details, setDetails] = useState({username: "", password: ""});
-    const { userLogin, isCallingAPI, error } = props;
+    const { userLoginSuccess, userLoginFailure, isCallingAPI, error } = props;
 
     const submitHandler = evt => {
         evt.preventDefault();
-        userLogin("https://water-my-plants-tt67.herokuapp.com/api/users/login", details);
-        push("/user/plants");
+        userLoginStart();
+        axiosWithAuth()
+          .post("/users/login", details)
+          .then( res => {
+            localStorage.setItem('token', JSON.stringify(res.data.access_token));
+            userLoginSuccess(res.data.user);
+            push(`/user/${res.data.user.user_id}/plants`);
+          })
+          .catch( err => {
+            console.log(err);
+            userLoginFailure(err);
+          })
+        
     }
 
     return (
@@ -85,4 +97,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { userLogin })(LoginForm);
+export default connect(mapStateToProps, { userLoginSuccess, userLoginFailure, userLoginStart })(LoginForm);

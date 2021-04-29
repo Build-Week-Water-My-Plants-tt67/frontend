@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogout } from '../store/actions';
 import styled from 'styled-components';
@@ -35,11 +35,17 @@ const StyledLogo = styled.div`
   }
 `
 
-  const { user_id, userLogout } = props;
+  const { user_id, userLogout, isLoggedIn } = props;
+  const { push } = useHistory();
+  const logoutHandler = evt => {
+    evt.preventDefault();
+    userLogout();
+    push('/');
+  }
 
   return (
       <StyledHeader>
-        { (localStorage.getItem('token')) ? 
+        { isLoggedIn ? 
           (
             <ul>
               <li>
@@ -50,10 +56,10 @@ const StyledLogo = styled.div`
                   />
                 </StyledLogo>
               </li>
-              <li><NavLink to = {`/user/plants`}>My Dashboard</NavLink></li>
-              <li><NavLink to = {`/plant/create`}>Add Plant</NavLink></li>
-              <li><NavLink to = {`/user/edit`}>Edit Profile</NavLink></li>
-              <li ><NavLink onClick={userLogout} to = '/'>Logout</NavLink></li>
+              <li><NavLink to = {`/user/${user_id}/plants`}>My Dashboard</NavLink></li>
+              <li><NavLink to = {`/user/${user_id}/plant/create`}>Add Plant</NavLink></li>
+              <li><NavLink to = {`/user/${user_id}/edit`}>Edit Profile</NavLink></li>
+              <li ><NavLink onClick={logoutHandler} to = ''>Logout</NavLink></li>
             </ul>
           ) : 
           (
@@ -66,7 +72,7 @@ const StyledLogo = styled.div`
                   />
                 </StyledLogo>
               </li>
-              <li><NavLink to = '/home'>Home</NavLink></li>
+              <li><NavLink to = '/'>Home</NavLink></li>
               <li><NavLink to = '/signup'>Sign Up</NavLink></li>
               <li><NavLink to = '/login'>Login</NavLink></li>
             </ul>
@@ -78,7 +84,8 @@ const StyledLogo = styled.div`
 
 const mapStateToProps = (state) => {
   return {
-    user_id: state.user.user.user_id
+    user_id: state.user.user.user_id,
+    isLoggedIn: state.user.isLoggedIn
   }
 }
 

@@ -7,7 +7,7 @@ export default yup.object().shape({
     .required("Username is required")
     .min(6, "username must be at least 6 characters"),
 
-  phoneNumber: yup
+  phone: yup
     .string()
     .required("Valid Phone Number is required"),
 
@@ -31,5 +31,8 @@ export default yup.object().shape({
     .required("Watering Frequency is required")
     .oneOf(["daily", "twicePerWeek", "weekly"], "watering frequency is required"),
 
+    image: yup
+    .string()
+    .min(6, "image must be at least 6 characters"),
 
 });

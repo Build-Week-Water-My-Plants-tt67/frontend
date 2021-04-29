@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import schema from './schema/formSchema';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { editPlant } from '../store/actions';
 
 const initialFormErrors = {
@@ -15,7 +16,8 @@ const initialDisabled = true;
 
 const EditPlant = (props) => {
   
-  const { plant, editPlant } = props;
+  const { user_id, error, plant, editPlant } = props;
+  const push = useHistory();
 
   const initialFormValues = {
     nickname: plant.nickname,
@@ -58,7 +60,10 @@ const EditPlant = (props) => {
       h20Frequency: formValues.h20Frequency.trim(),
       image: formValues.image
     };
-    editPlant(`https://water-my-plants-tt67.herokuapp.com/api/plants/${plant.plant_id}`, updatedPlant);
+    editPlant(`/plants/${plant.plant_id}`, updatedPlant);
+    if (error === '') {
+      push(`/user/${user_id}/plant/${plant.plant_id}`);
+    }
   };
     
   useEffect(() => {
@@ -125,7 +130,14 @@ const EditPlant = (props) => {
           </label>
           <div>
             <label htmlFor="image"><h4>Select Image: </h4>
-            <input type="file" id="image" name="image" value={formValues.image} accept="image/*" />
+              <input
+                type="text"
+                value={formValues.image}
+                onChange={onChange}
+                name="image"
+                id="image-input"
+                placeholder="Image Location"
+              />
             </label>
           </div>
           <div id="submit">
