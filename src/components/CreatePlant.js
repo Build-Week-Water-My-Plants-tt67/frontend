@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import schema from './schema/formSchema';
+import schema from './schema/formSchema2';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -17,7 +17,7 @@ const initialFormErrors = {
   nickname: "",
   species: "",
   h20Frequency: "",
-  image: "",
+  
 };
 
 const initialDisabled = true;
@@ -58,7 +58,7 @@ const CreatePlant = (props) => {
       nickname: formValues.nickname.trim(),
       species: formValues.species.trim(),
       h20Frequency: formValues.h20Frequency.trim(),
-      image: formValues.image
+      image: formValues.image.trim(),
     };
     addPlant(`/plants/${user_id}`, newPlant);
     if ( error === '') {

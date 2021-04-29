@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import { userLogout } from '../store/actions';
 import styled from 'styled-components';
 
+import plant_img from './images/plant_img.jpg'
+import Login from './Login';
+
+
 const Header = (props) => {
   
   const StyledHeader = styled.header`
@@ -45,25 +49,9 @@ const StyledLogo = styled.div`
 
   return (
       <StyledHeader>
-        { isLoggedIn ? 
-          (
-            <ul>
-              <li>
-                <StyledLogo>
-                  <img 
-                    src='%components/images%kelly-sikkema-SaJzwm0xR9c-unsplash.jpg'
-                    alt="logo"
-                  />
-                </StyledLogo>
-              </li>
-              <li><NavLink to = {`/user/${user_id}/plants`}>My Dashboard</NavLink></li>
-              <li><NavLink to = {`/user/${user_id}/plant/create`}>Add Plant</NavLink></li>
-              <li><NavLink to = {`/user/${user_id}/edit`}>Edit Profile</NavLink></li>
-              <li ><NavLink onClick={logoutHandler} to = ''>Logout</NavLink></li>
-            </ul>
-          ) : 
-          (
-            <ul>
+
+
+          <ul>
               <li>
                 <StyledLogo>
                   <img 
@@ -76,6 +64,28 @@ const StyledLogo = styled.div`
               <li><NavLink to = '/signup'>Sign Up</NavLink></li>
               <li><NavLink to = '/login'>Login</NavLink></li>
             </ul>
+
+      <StyledHeader>
+       <StyledLogo>
+        <img src={plant_img} alt="green plant"/>
+       </StyledLogo>
+       <nav>
+         <Link to={'/'}>Home</Link>
+         <Link>Gallery</Link>
+         <Link>Contact</Link>
+       </nav>
+       <StyledLink>
+        <Link to={`/login`}>
+          <Login/>
+        </Link>
+        </StyledLink>
+      </StyledHeader>
+            // <ul>
+            //   {/* <li><NavLink to = '/home'>Home</NavLink></li> */}
+            //   <li><NavLink to = '/signup'>Sign Up</NavLink></li>
+            //   <li><NavLink to = '/login'>Login</NavLink></li>
+            // </ul>
+
           )
           }
       </StyledHeader>
