@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogout } from '../store/actions';
 import styled from 'styled-components';
+import plant_img from './images/plant_img.jpg'
 import Login from './Login';
 
 const Header = (props) => {
@@ -65,7 +66,7 @@ const StyledLink = styled.div`
           (
       <StyledHeader>
        <StyledLogo>
-       <img src='%components/images%kelly-sikkema-SaJzwm0xR9c-unsplash.jpg'/>
+        <img src={plant_img} alt="green plant"/>
        </StyledLogo>
        <nav>
          <Link to={'/'}>Home</Link>
