@@ -79,15 +79,10 @@ const StyledLink = styled.div`
         </StyledLink>
       </StyledHeader>
             // <ul>
-            //   <li><NavLink to = '/home'>Home</NavLink></li>
+            //   {/* <li><NavLink to = '/home'>Home</NavLink></li> */}
             //   <li><NavLink to = '/signup'>Sign Up</NavLink></li>
             //   <li><NavLink to = '/login'>Login</NavLink></li>
             // </ul>
-            <ul>
-              {/* <li><NavLink to = '/home'>Home</NavLink></li> */}
-              <li><NavLink to = '/signup'>Sign Up</NavLink></li>
-              <li><NavLink to = '/login'>Login</NavLink></li>
-            </ul>
           )
           }
       
