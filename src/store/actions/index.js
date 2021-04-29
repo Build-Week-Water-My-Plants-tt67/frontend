@@ -10,7 +10,8 @@ export const userLogin = (URL, credentials) => dispatch => {
     .post(URL, credentials)
     .then( res => {
       console.log(res.data);
-      dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data});
+      window.localStorage.setItem('token', JSON.stringify(res.data.access_token));
+      dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data.user});
     })
     .catch( err => {
       console.log(err);

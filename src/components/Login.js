@@ -16,7 +16,7 @@ const StyledLogin = styled.div`
     color: #333;
     font-family: sans-serif;
     font-size: .8rem;
-    padding: 3% 7%;
+    padding: 3% 3%;
     border-radius: 10px;
     font-weight: bold;
 
