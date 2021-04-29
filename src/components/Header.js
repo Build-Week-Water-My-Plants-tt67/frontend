@@ -52,20 +52,35 @@ const StyledLogo = styled.div`
   }
 
   return (
-      <StyledHeader>
-         <StyledLogo>
-        <img src={plant_img} alt="green plant"/>
-       </StyledLogo>
-
+    <StyledHeader>
+      { isLoggedIn ? 
+        (
           <ul>
-              <li>
-              </li>
-              <li><NavLink to = '/'>Home</NavLink></li>
-              <li><NavLink to = '/signup'>Sign Up</NavLink></li>
-              <li><NavLink to = '/login'>Login</NavLink></li>
-            </ul>
-  
-      </StyledHeader>
+            <li>
+              <StyledLogo>
+                <img src={plant_img} alt="green plant"/>
+              </StyledLogo>
+            </li>
+            <li><NavLink to = {`/user/${user_id}/plants`}>My Dashboard</NavLink></li>
+            <li><NavLink to = {`/user/${user_id}/plant/create`}>Add Plant</NavLink></li>
+            <li><NavLink to = {`/user/${user_id}/edit`}>Edit Profile</NavLink></li>
+            <li ><NavLink onClick={logoutHandler} to = ''>Logout</NavLink></li>
+          </ul>
+        ) : 
+        (
+          <ul>
+            <li>
+              <StyledLogo>
+                <img src={plant_img} alt="green plant"/>
+              </StyledLogo>
+            </li>
+            <li><NavLink to = '/'>Home</NavLink></li>
+            <li><NavLink to = '/signup'>Sign Up</NavLink></li>
+            <li><NavLink to = '/login'>Login</NavLink></li>
+          </ul>
+        )
+        }
+    </StyledHeader>
   )
 }
 
@@ -77,3 +92,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { userLogout })(Header);
+
