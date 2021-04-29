@@ -3,23 +3,23 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogout } from '../store/actions';
 import styled from 'styled-components';
-
-import plant_img from './images/plant_img.jpg'
-import Login from './Login';
+import plant_img from './images/plant_img.jpg';
 
 
 const Header = (props) => {
   
   const StyledHeader = styled.header`
     width: 100%;
-    margin-bottom: 0;
     background-color: #1f441e;
+    display: flex;
 
     ul {
       padding: 1rem 0;
       list-style-type: none;
       display: flex;
       justify-content: space-evenly;
+      align-items: center;
+      width: 80%;
     }
 
     li {
@@ -33,9 +33,13 @@ const Header = (props) => {
 
   `
 const StyledLogo = styled.div`
-  
+  width: 20%;
+  margin: 1% 1%;
+
   img{
     width: 20%;
+    height: 7vh;
+    border-radius: 10px;
   }
 `
 
@@ -49,45 +53,18 @@ const StyledLogo = styled.div`
 
   return (
       <StyledHeader>
-
+         <StyledLogo>
+        <img src={plant_img} alt="green plant"/>
+       </StyledLogo>
 
           <ul>
               <li>
-                <StyledLogo>
-                  <img 
-                    src='%components/images%kelly-sikkema-SaJzwm0xR9c-unsplash.jpg'
-                    alt="logo"
-                  />
-                </StyledLogo>
               </li>
               <li><NavLink to = '/'>Home</NavLink></li>
               <li><NavLink to = '/signup'>Sign Up</NavLink></li>
               <li><NavLink to = '/login'>Login</NavLink></li>
             </ul>
-
-      <StyledHeader>
-       <StyledLogo>
-        <img src={plant_img} alt="green plant"/>
-       </StyledLogo>
-       <nav>
-         <Link to={'/'}>Home</Link>
-         <Link>Gallery</Link>
-         <Link>Contact</Link>
-       </nav>
-       <StyledLink>
-        <Link to={`/login`}>
-          <Login/>
-        </Link>
-        </StyledLink>
-      </StyledHeader>
-            // <ul>
-            //   {/* <li><NavLink to = '/home'>Home</NavLink></li> */}
-            //   <li><NavLink to = '/signup'>Sign Up</NavLink></li>
-            //   <li><NavLink to = '/login'>Login</NavLink></li>
-            // </ul>
-
-          )
-          }
+  
       </StyledHeader>
   )
 }

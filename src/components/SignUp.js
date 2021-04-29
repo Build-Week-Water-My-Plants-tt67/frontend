@@ -3,6 +3,15 @@ import * as yup from 'yup';
 import schema from './schema/formSchema';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+const StyledSignUp = styled.div`
+  padding: 2% 2%;
+
+  label{
+    margin-bottom: 2%;
+  }
+  `
 
 const initialFormValues = {
   username: "",
@@ -93,7 +102,7 @@ export default function Form() {
 
   return (
     <>
-      <div>
+      <StyledSignUp>
           <div>
 
           <form onSubmit={onSubmit} id="signup-form">
@@ -118,6 +127,7 @@ export default function Form() {
                 />
               </label>
                 <br/>
+                <br/>
               <label>Phone Number:
                 <input
                   type="text"
@@ -130,6 +140,7 @@ export default function Form() {
                 />
               </label>
               <br/>
+              <br/>
               <label>Password: 
                 <input
                   type="password"
@@ -141,13 +152,14 @@ export default function Form() {
                   maxLength="30"
                 />
               </label>
+              <br/>
               <div id="submit">
                 <button id="submit" disabled={disabled}>Sign Up</button>
               </div>
           </div>
           </form>
         </div>
-    </div>
+    </StyledSignUp>
   </>
   )
 }
