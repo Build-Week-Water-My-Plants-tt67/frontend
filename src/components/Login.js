@@ -8,8 +8,10 @@ import styled from 'styled-components';
 const StyledLogin = styled.div`
   width: 50%;
   display: flex;
-  justify-content: left;
+  justify-content: center;
+  align-items: center;
   color: white;
+  padding: 2% 0;
 
 
   button{
@@ -17,9 +19,10 @@ const StyledLogin = styled.div`
     color: #333;
     font-family: sans-serif;
     font-size: .8rem;
-    padding: 3% 3%;
+    padding: 1% 2%;
     border-radius: 10px;
     font-weight: bold;
+    margin: 2%;
 
         &:hover {
         background-color: rgba(104, 104, 104, 0.8);

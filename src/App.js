@@ -2,18 +2,16 @@ import React from "react";
 import EditUser from './components/EditUser';
 import CreatePlant from "./components/CreatePlant";
 import Home from "./components/Home";
-
 import SignUp from "./components/SignUp";
-
-
 import LoginForm from './components/Login';
+import Footer from './components/Footer';
 import UserDashboard from './components/UserDashboard';
 import Plant from './components/Plant';
 import EditPlant from "./components/EditPlant";
 import Header from "./components/Header";
 import { Route, Switch } from "react-router";
 import PrivateRoute from "./components/PrivateRoute";
-import SignUp from "./components/SignUp";
+
 
 const App = () => {
 
@@ -41,7 +39,7 @@ const App = () => {
           <Route exact path='/' component = { Home }/>
         </Switch>
       </main>
-      <Header/>
+      <Footer/>
         
     </div>
 
