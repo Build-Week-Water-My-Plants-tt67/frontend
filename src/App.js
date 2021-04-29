@@ -1,14 +1,17 @@
-import React, {useState } from "react";
-import { Link } from 'react-router-dom';
+import React from "react";
 import EditUser from './components/EditUser';
 import CreatePlant from "./components/CreatePlant";
 import Home from "./components/Home";
+
+import SignUp from "./components/SignUp";
+
+
 import LoginForm from './components/Login';
 import UserDashboard from './components/UserDashboard';
 import Plant from './components/Plant';
 import EditPlant from "./components/EditPlant";
 import Header from "./components/Header";
-import { Redirect, Route, Switch } from "react-router";
+import { Route, Switch } from "react-router";
 import PrivateRoute from "./components/PrivateRoute";
 import SignUp from "./components/SignUp";
 
@@ -17,41 +20,30 @@ const App = () => {
   return (
     <div className="App">
       <Header/>
-   
-
-      {/* {(user.phoneNumber != "") ? (
-        <div className= "welcome">
-          <h2>Welcome, <span>{user.username}</span></h2>
-          <button onClick= {Logout}>Logout</button>
-        </div>
-      ) : (
-        <LoginForm Login={Login} error={error}/>
-      )} */}
-        <div>
-          <Home/>
-          {/* <EditUser/> */}
-       </div>
-
-      {/* <div>
-          <SignUp />
-       </div>
-       <CreatePlant/> */}
-
-      
-        <Header/>
+      <main>
         <Switch>
-          <Route exact path='/'>
-            <Redirect to='/login'/>
-          </Route>
-          <PrivateRoute exact path="/plant" component={Plant} />
-          <PrivateRoute exact path="/user/plants" component={UserDashboard} />
+          <PrivateRoute path="/user/:user_id/edit" component={EditUser}/>
+          <PrivateRoute path="/user/:user_id/plant/create" component={CreatePlant}/>
+          <PrivateRoute
+            path="/user/:user_id/plant/:plant_id/edit"
+            component={EditPlant}
+          />
+          <PrivateRoute
+            path="/user/:user_id/plant/:plant_id"
+            component={Plant}
+          />
+          <PrivateRoute
+            exact path="/user/:user_id/plants"
+            component={UserDashboard}
+          />
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignUp} />
-          <PrivateRoute exact path="/user/edit" component={EditUser}/>
-          <PrivateRoute exact path="/plant/create" component={CreatePlant}/>
-          <PrivateRoute exact path="/plant/edit" component={EditPlant}/>
+          <Route exact path='/' component = { Home }/>
         </Switch>
-      </div>
+      </main>
+      <Header/>
+        
+    </div>
 
   );
 };

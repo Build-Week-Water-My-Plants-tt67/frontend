@@ -1,11 +1,6 @@
 import * as yup from "yup";
 
 export default yup.object().shape({
-    
-  username: yup
-    .string()
-    .required("Username is required")
-    .min(6, "username must be at least 6 characters"),
 
   phone: yup
     .string()
@@ -16,9 +11,5 @@ export default yup.object().shape({
     .required("Password is required")
     .min(8, "password must be at least 8 characters"),
 
-
-    image: yup
-    .string()
-    .min(6, "image must be at least 6 characters"),
-
+  
 });
