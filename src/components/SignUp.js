@@ -7,9 +7,19 @@ import styled from 'styled-components';
 
 const StyledSignUp = styled.div`
   padding: 2% 2%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   label{
     margin-bottom: 2%;
+  }
+
+  input {
+    margin: 1rem 0;
+    margin-left: 0.5rem;
   }
   `
 

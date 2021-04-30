@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledFooter= styled.div`
+const Footer = () => {
+
+    const StyledFooter= styled.div`
     width: 100%;
     background-color: #1f441e;
     color: white;
@@ -11,8 +13,6 @@ const StyledFooter= styled.div`
     font-weight: bold;
 
     `
-    
-const Footer = () => {
 
 return (
     <StyledFooter>

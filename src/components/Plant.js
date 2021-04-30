@@ -12,7 +12,7 @@ const StyledPlant = styled.div`
   flex-wrap: wrap;
   -webkit-justify-content: space-around;
   justify-content: space-around;
-  width: 1600px;
+  width: 100%;
   margin: 0 auto;
 
  .img-wrapper {
@@ -65,7 +65,7 @@ const Plant = (props) => {
                 <img src={plant.image} alt={plant.nickname} />
               </div>
                 <p>Species: <strong>{plant.species}</strong></p>
-                <p>Watering Frequency: <strong>{plant.h20frequency}</strong></p>
+                <p>Watering Frequency: <strong>{plant.h2oFrequency}</strong></p>
             </section>
             
             <section>

@@ -4,6 +4,7 @@ import schema from './schema/editUserSchema';
 import { editUser } from '../store/actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const StyledEditUser = styled.div`
   padding: 2% 2%;
@@ -13,6 +14,7 @@ const StyledEditUser = styled.div`
 const EditUser = (props) => {
 
   const { user, editUser } = props;
+  const { push } = useHistory();
 
   const initialFormValues = {
     username: user.username,
@@ -68,6 +70,7 @@ const EditUser = (props) => {
   const onSubmit = evt => {
     evt.preventDefault();
     editUser(`/users/${user.user_id}`, values);
+    push(`/user/${user.user_id}/plants`);
   }
 
   return (
