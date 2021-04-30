@@ -1,9 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import schema from './schema/formSchema';
+import schema from './schema/formSchema2';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { editPlant } from '../store/actions';
+import styled from 'styled-components';
+
+const StyledEditPlant = styled.div`
+  padding: 2% 2%;
+
+  `
 
 const initialFormErrors = {
   nickname: "",
@@ -84,7 +90,7 @@ const EditPlant = (props) => {
 
   return (
 
-    <div>
+    <StyledEditPlant>
       <h1>Edit Your {plant.nickname}</h1>
 
       <form onSubmit={onSubmit} id="create-form">
@@ -146,7 +152,7 @@ const EditPlant = (props) => {
         </div>
       </form>
    
-    </div>
+    </StyledEditPlant>
   )
 }
 

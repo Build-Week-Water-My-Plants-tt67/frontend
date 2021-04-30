@@ -12,7 +12,7 @@ const StyledPlant = styled.div`
   flex-wrap: wrap;
   -webkit-justify-content: space-around;
   justify-content: space-around;
-  width: 1600px;
+  width: 100%;
   margin: 0 auto;
 
 .plant-card {
