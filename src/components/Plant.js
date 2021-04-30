@@ -2,6 +2,33 @@ import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deletePlant, setCurrentPlant } from '../store/actions';
+import styled from 'styled-components'
+
+const StyledPlant = styled.div`
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  width: 1600px;
+  margin: 0 auto;
+
+ .img-wrapper {
+  border-radius: 5px;
+  background: #fff;
+  width: 10px;
+  margin: 30px;
+  text-align: center;
+}
+img {
+  object-fit: contain;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  max-width: 333px;
+}
+`
 
 const Plant = (props) => {
 
@@ -30,7 +57,7 @@ const Plant = (props) => {
   return(
     <div className="plant">				
         <h3 className="plant-title">{plant.nickname} Details:</h3>
-        
+        <StyledPlant>
         <div className="plant-container">
 
           <section className="plant-details">
@@ -51,6 +78,7 @@ const Plant = (props) => {
           </section>
 
         </div>
+        </StyledPlant>
     </div>
   );
 }
