@@ -12,7 +12,7 @@ const StyledPlant = styled.div`
   flex-wrap: wrap;
   -webkit-justify-content: space-around;
   justify-content: space-around;
-  width: 1600px;
+  width: 100%;
   margin: 0 auto;
 
  .img-wrapper {
@@ -32,7 +32,7 @@ img {
 
 const Plant = (props) => {
 
-  const { user_id, plant, setCurrentPlant, isCallingAPI, error, deletePlant } = props;
+  const { user_id, plant, setCurrentPlant, deletePlant } = props;
   const { plant_id } = useParams();
   const { push } = useHistory();
 
@@ -56,28 +56,28 @@ const Plant = (props) => {
 
   return(
     <div className="plant">				
-        <h3 className="plant-title">{plant.nickname} Details:</h3>
+      <h3 className="plant-title">{plant.nickname} Details:</h3>
         <StyledPlant>
-        <div className="plant-container">
+          <div className="plant-container">
 
-          <section className="plant-details">
-            <div className="image-wrapper">
-              <img src={plant.image} alt={plant.nickname} />
-            </div>
-              <p>Species: <strong>{plant.species}</strong></p>
-              <p>Watering Frequency: <strong>{plant.h20frequency}</strong></p>
-          </section>
-          
-          <section>
-            <button onClick={handleEdit}>
-              Edit Plant
-            </button>
-            <button onClick={handleDelete}>
-              Delete Plant
-            </button>
-          </section>
+            <section className="plant-details">
+              <div className="image-wrapper">
+                <img src={plant.image} alt={plant.nickname} />
+              </div>
+                <p>Species: <strong>{plant.species}</strong></p>
+                <p>Watering Frequency: <strong>{plant.h2oFrequency}</strong></p>
+            </section>
+            
+            <section>
+              <button onClick={handleEdit}>
+                Edit Plant
+              </button>
+              <button onClick={handleDelete}>
+                Delete Plant
+              </button>
+            </section>
 
-        </div>
+          </div>
         </StyledPlant>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import schema from './schema/formSchema2';
+import schema from './schema/plantFormSchema';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -23,12 +23,12 @@ const initialDisabled = true;
 const EditPlant = (props) => {
   
   const { user_id, error, plant, editPlant } = props;
-  const push = useHistory();
+  const { push } = useHistory();
 
   const initialFormValues = {
     nickname: plant.nickname,
     species: plant.species,
-    h20Frequency: plant.h20Frequency,
+    h2oFrequency: plant.h2oFrequency,
     image: plant.image,
   };
 
@@ -63,7 +63,7 @@ const EditPlant = (props) => {
     const updatedPlant = {
       nickname: formValues.nickname.trim(),
       species: formValues.species.trim(),
-      h20Frequency: formValues.h20Frequency.trim(),
+      h2oFrequency: formValues.h2oFrequency.trim(),
       image: formValues.image
     };
     editPlant(`/plants/${plant.plant_id}`, updatedPlant);
@@ -98,7 +98,7 @@ const EditPlant = (props) => {
             <em>
           <div>{formErrors.nickname}</div>
           <div>{formErrors.species}</div>
-          <div>{formErrors.h20Frequency}</div>
+          <div>{formErrors.h2oFrequency}</div>
           </em>
         </div>
         <div>
@@ -127,7 +127,7 @@ const EditPlant = (props) => {
           </label>
 
           <label><h4>Watering Frequency: </h4>
-            <select value={formValues.h20Frequency} name="h20Frequency" onChange={onChange} id="frequency-dropdown">
+            <select value={formValues.h2oFrequency} name="h2oFrequency" onChange={onChange} id="frequency-dropdown">
               <option value="">-- Select --</option>
               <option value="daily">Daily</option>
               <option value="twicePerWeek">Twice Per Week</option>

@@ -6,12 +6,18 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 
 const StyledLogin = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
   padding: 2% 0;
+
+  input {
+    margin: 1rem 0;
+    margin-left: 0.5rem;
+  }
 
 
   button{
@@ -63,7 +69,7 @@ const LoginForm = (props) => {
             (
             <form onSubmit={submitHandler}>
                 <StyledLogin>
-                   
+                   <h2>Welcome Back!</h2>
                     {(error !== "") ? (<div className= "error">{error}</div>) : ""}
                     <div className= "form-group">
                         <label>Username: </label>

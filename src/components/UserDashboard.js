@@ -30,13 +30,13 @@ const StyledPlant = styled.div`
 }
 
 `
+
 const UserDashboard = (props) => {
-  const { plants, isCallingAPI, error, user, getPlants } = props;
+  const { plants, isCallingAPI, user, getPlants } = props;
   const { push } = useHistory();
   
-  console.log(user);
   useEffect(()=>{
-    getPlants(`https://water-my-plants-tt67.herokuapp.com/api/users/1/plants`);
+    getPlants(`https://water-my-plants-tt67.herokuapp.com/api/users/${user.user_id}/plants`);
   }, []);
 
   const handleClick = (ev, plant) => {
@@ -52,7 +52,7 @@ const UserDashboard = (props) => {
       { (plants.length === 0) ? (<h3>Click below to add your first plant!</h3>) :
         <h3>Your Plants</h3>
       } 
-      <div><StyledPlant>
+      <StyledPlant>
         {plants.map(plant => (
           <div
             onClick={ev => handleClick(ev, plant)}
@@ -68,8 +68,7 @@ const UserDashboard = (props) => {
             <p>{plant.species}</p>
           </div>
         ))}
-        </StyledPlant>
-      </div>
+      </StyledPlant>
     </div>
 );
 

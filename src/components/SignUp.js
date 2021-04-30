@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
-import schema from './schema/formSchema';
+import schema from './schema/signUpFormSchema';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledSignUp = styled.div`
   padding: 2% 2%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   label{
     margin-bottom: 2%;
+  }
+
+  input {
+    margin: 1rem 0;
+    margin-left: 0.5rem;
   }
   `
 
 const initialFormValues = {
   username: "",
-  phoneNumber: "",
+  phone: "",
   password: "",
 };
 
 const initialFormErrors = {
   username: "",
-  phoneNumber: "",
+  phone: "",
   password: "",
 };
 
@@ -40,7 +50,7 @@ export default function Form() {
 
   const postNewSignUp = (newSignUp) => {
     axios
-      .post("https://reqres.in/api/orders", newSignUp)
+    .post("https://water-my-plants-tt67.herokuapp.com/api/users/register", newSignUp)
       .then((res) => {
         setSignUp([res.data, ...signUp]);
         setFormValues(initialFormValues);
@@ -78,7 +88,7 @@ export default function Form() {
   const formSubmit = () => {
     const newSignUp = {
       username: formValues.username.trim(),
-      phoneNumber: formValues.phoneNumber.trim(),
+      phone: formValues.phone.trim(),
       password: formValues.password.trim(),
     };
     postNewSignUp(newSignUp);
@@ -97,7 +107,7 @@ export default function Form() {
 
   const onSubmit = evt => {
       evt.preventDefault()
-      formSubmit()
+      formSubmit();
   }
 
   return (
@@ -109,7 +119,7 @@ export default function Form() {
               <div>
                 <em>
                 <div>{formErrors.username}</div>
-                <div>{formErrors.phoneNumber}</div>
+                <div>{formErrors.phone}</div>
                 <div>{formErrors.password}</div>
                 </em>
               </div>
@@ -131,9 +141,9 @@ export default function Form() {
               <label>Phone Number:
                 <input
                   type="text"
-                  value={formValues.phoneNumber}
+                  value={formValues.phone}
                   onChange={onChange}
-                  name="phoneNumber"
+                  name="phone"
                   id="number-input"
                   placeholder="Phone Number"
                   maxLength="30"
