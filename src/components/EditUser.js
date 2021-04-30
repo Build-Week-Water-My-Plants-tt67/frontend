@@ -17,7 +17,7 @@ const EditUser = (props) => {
   const initialFormValues = {
     username: user.username,
     phone: user.phone,
-    password: user.password
+    password: ''
   };
   
   const initialFormErrors = {
@@ -93,7 +93,7 @@ const EditUser = (props) => {
             />
           </label>
 
-          <label><h4>Update Password: </h4>
+          <label><h4>Enter or Update Password: </h4>
             <input
               type="password"
               value={values.password}

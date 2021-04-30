@@ -7,7 +7,7 @@ export default yup.object().shape({
     .required("Username is required")
     .min(6, "username must be at least 6 characters"),
 
-  phoneNumber: yup
+  phone: yup
     .string()
     .required("Valid Phone Number is required")
     .min(8, "Phone Number must be at least 8 numbers"),

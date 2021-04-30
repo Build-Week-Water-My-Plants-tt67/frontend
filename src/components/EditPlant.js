@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import schema from './schema/formSchema2';
+import schema from './schema/plantFormSchema';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';

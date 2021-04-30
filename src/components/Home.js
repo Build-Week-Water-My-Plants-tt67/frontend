@@ -1,10 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Home = () => {
-  
-  const StyledHome = styled.div`
+const StyledHome = styled.div`
     display: flex;
   `
   const StyledContent = styled.div`
@@ -56,22 +53,23 @@ const Home = () => {
 
 `
 
+const Home = () => {
+  
   return (
     <>
+      <StyledHome>
+        <StyledImage>
 
-    <StyledHome>
-      <StyledImage>
-
-      </StyledImage>
-      <StyledContent>
-        <h1>Welcome to Water My Plants!</h1>
+        </StyledImage>
+        <StyledContent>
+          <h1>Welcome to Water My Plants!</h1>
+            
+          <h3>If you are looking for help automating a watering schedule for all of the important foliage in your life, you've come to the right place!</h3>
           
-        <h3>If you are looking for help automating a watering schedule for all of the important foliage in your life, you've come to the right place!</h3>
-        
-        <h3>Our app is compatible with multiple Smart Home managers, including Alexa, Apple HomeKit, Google Assistant, and ITTT. Click below to sign up, or if you are a returning user, login.</h3>
-        <br/>
-      </StyledContent>
-    </StyledHome>
+          <h3>Our app is compatible with multiple Smart Home managers, including Alexa, Apple HomeKit, Google Assistant, and ITTT. Click to sign up, or if you are a returning user, login.</h3>
+          <br/>
+        </StyledContent>
+      </StyledHome>
     </>
   )
 }

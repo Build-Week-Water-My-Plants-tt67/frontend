@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import schema from './schema/formSchema2';
+import schema from './schema/plantFormSchema';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -91,72 +91,72 @@ const CreatePlant = (props) => {
   return (
     <>
 
-<StyledCreatePlant>
-    <div>
-      <h1> Create A New Plant</h1>
+      <StyledCreatePlant>
+          <div>
+            <h1> Create A New Plant</h1>
 
-    <form onSubmit={onSubmit} id="create-form">
-        <div className="errors">
-            <em>
-          <div>{formErrors.nickname}</div>
-          <div>{formErrors.species}</div>
-          <div>{formErrors.h20Frequency}</div>
-          </em>
-        </div>
-    <div>
-        <label><h4>Nickname: </h4>
-          <input
-            type="text"
-            value={formValues.nickname}
-            onChange={onChange}
-            name="nickname"
-            id="nickname-input"
-            placeholder="Nickname"
-            maxLength="30"
-          />
-        </label>
+          <form onSubmit={onSubmit} id="create-form">
+              <div className="errors">
+                  <em>
+                <div>{formErrors.nickname}</div>
+                <div>{formErrors.species}</div>
+                <div>{formErrors.h20Frequency}</div>
+                </em>
+              </div>
+          <div>
+              <label><h4>Nickname: </h4>
+                <input
+                  type="text"
+                  value={formValues.nickname}
+                  onChange={onChange}
+                  name="nickname"
+                  id="nickname-input"
+                  placeholder="Nickname"
+                  maxLength="30"
+                />
+              </label>
 
-        <label><h4>Species: </h4>
-          <input
-            type="text"
-            value={formValues.species}
-            onChange={onChange}
-            name="species"
-            id="species-input"
-            placeholder="Species"
-            maxLength="30"
-          />
-        </label>
+              <label><h4>Species: </h4>
+                <input
+                  type="text"
+                  value={formValues.species}
+                  onChange={onChange}
+                  name="species"
+                  id="species-input"
+                  placeholder="Species"
+                  maxLength="30"
+                />
+              </label>
 
-      <label><h4>Watering Frequency: </h4>
-          <select value={formValues.h20Frequency} name="h20Frequency" onChange={onChange} id="frequency-dropdown">
-            <option value="">-- Select --</option>
-            <option value="daily">Daily</option>
-            <option value="twicePerWeek">Twice Per Week</option>
-            <option value="weekly">Weekly</option>
-          </select>
-        </label>
-        <div>
-        <label htmlFor="image"><h4>Select Image: </h4>
-          <input
-              type="text"
-              value={formValues.image}
-              onChange={onChange}
-              name="image"
-              id="image-input"
-              placeholder="Image Location"
-            />
-          </label>
+            <label><h4>Watering Frequency: </h4>
+                <select value={formValues.h20Frequency} name="h20Frequency" onChange={onChange} id="frequency-dropdown">
+                  <option value="">-- Select --</option>
+                  <option value="daily">Daily</option>
+                  <option value="twicePerWeek">Twice Per Week</option>
+                  <option value="weekly">Weekly</option>
+                </select>
+              </label>
+              <div>
+              <label htmlFor="image"><h4>Select Image: </h4>
+                <input
+                    type="text"
+                    value={formValues.image}
+                    onChange={onChange}
+                    name="image"
+                    id="image-input"
+                    placeholder="Image Location"
+                  />
+                </label>
+              </div>
+              <div id="submit">
+                <button id="submit" disabled={disabled}>Create A Plant</button>
+              </div>
+          </div>
+          </form>
         </div>
-        <div id="submit">
-          <button id="submit" disabled={disabled}>Create A Plant</button>
-        </div>
-    </div>
-    </form>
-  </div>
-   
-</StyledCreatePlant>
-</>
+        
+      </StyledCreatePlant>
+    </>
   )
 }
 

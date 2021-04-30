@@ -5,10 +5,7 @@ import { userLogout } from '../store/actions';
 import styled from 'styled-components';
 import plant_img from './images/plant_img.jpg';
 
-
-const Header = (props) => {
-  
-  const StyledHeader = styled.header`
+const StyledHeader = styled.header`
     width: 100%;
     background-color: #1f441e;
     display: flex;
@@ -37,12 +34,14 @@ const StyledLogo = styled.div`
   margin: 1% 1%;
 
   img{
-    width: 20%;
-    height: 7vh;
+    width: 50px;
+    height: 50px;
     border-radius: 10px;
   }
 `
 
+const Header = (props) => {
+  
   const { user_id, userLogout, isLoggedIn } = props;
   const { push } = useHistory();
   const logoutHandler = evt => {
@@ -55,32 +54,31 @@ const StyledLogo = styled.div`
     <StyledHeader>
       { isLoggedIn ? 
         (
-          <>
-          <StyledLogo>
+          <ul>
+            <li>
+              <StyledLogo>
                 <img src={plant_img} alt="green plant"/>
               </StyledLogo>
-          <ul>
+            </li>
             <li><NavLink to = {`/user/${user_id}/plants`}>My Dashboard</NavLink></li>
             <li><NavLink to = {`/user/${user_id}/plant/create`}>Add Plant</NavLink></li>
             <li><NavLink to = {`/user/${user_id}/edit`}>Edit Profile</NavLink></li>
             <li ><NavLink onClick={logoutHandler} to = ''>Logout</NavLink></li>
           </ul>
-          </>
         ) : 
         (
-          <>
-          <StyledLogo>
+          <ul>
+            <li>
+              <StyledLogo>
                 <img src={plant_img} alt="green plant"/>
               </StyledLogo>
-          <ul>
+            </li>
             <li><NavLink to = '/'>Home</NavLink></li>
             <li><NavLink to = '/signup'>Sign Up</NavLink></li>
             <li><NavLink to = '/login'>Login</NavLink></li>
           </ul>
-          </>
-        )
-       
-        }
+        )  
+      }
     </StyledHeader>
   )
 }

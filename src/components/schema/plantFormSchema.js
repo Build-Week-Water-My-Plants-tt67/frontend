@@ -17,8 +17,4 @@ h20Frequency: yup
 .required("Watering Frequency is required")
 .oneOf(["daily", "twicePerWeek", "weekly"], "watering frequency is required"),
 
-image: yup
-.string()
-.required("Image is required"),
-
 });
