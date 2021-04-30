@@ -4,7 +4,12 @@ import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { addPlant } from '../store/actions';
+import styled from 'styled-components';
 
+const StyledCreatePlant = styled.div`
+  padding: 2% 2%;
+
+  `
 
 const initialFormValues = {
     nickname: "",
@@ -86,7 +91,7 @@ const CreatePlant = (props) => {
   return (
     <>
 
-<div>
+<StyledCreatePlant>
     <div>
       <h1> Create A New Plant</h1>
 
@@ -150,7 +155,7 @@ const CreatePlant = (props) => {
     </form>
   </div>
    
-</div>
+</StyledCreatePlant>
 </>
   )
 }

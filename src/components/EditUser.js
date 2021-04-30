@@ -3,6 +3,12 @@ import * as yup from 'yup';
 import schema from './schema/editUserSchema';
 import { editUser } from '../store/actions';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+
+const StyledEditUser = styled.div`
+  padding: 2% 2%;
+
+  `
 
 const EditUser = (props) => {
 
@@ -65,7 +71,7 @@ const EditUser = (props) => {
   }
 
   return (
-    <div className="edit-user">
+    <StyledEditUser>
       <form onSubmit={onSubmit} id="Edit-User">
         <div>
           <em>
@@ -103,7 +109,7 @@ const EditUser = (props) => {
           </div>
         </div>
       </form>
-    </div>
+    </StyledEditUser>
   )
 }
 
