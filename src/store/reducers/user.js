@@ -38,7 +38,7 @@ export const user = (state=initialState, action) => {
       case EDIT_USER_SUCCESS:
         return {
           ...state,
-          plants: action.payload,
+          user: action.payload,
           isCallingAPI: false
         };
       case EDIT_USER_FAILURE:
