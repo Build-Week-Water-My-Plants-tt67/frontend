@@ -23,8 +23,9 @@ With an easy to use interface for creating a plant watering schedule tailored to
 
 ## Technologies Used
 
-- The app was built using React and is a single page application
+- The app was built using React as a single page application
 - Styling is done using CSS and styled components
 - Global application state management utilizes Redux; state confined to individual components uses React useState hooks
 - This version of the app supports a backend built using Node.js
 - API calls are made using the axios library
+- Authentication and private routing 
