@@ -28,4 +28,4 @@ With an easy to use interface for creating a plant watering schedule tailored to
 - Global application state management utilizes Redux; state confined to individual components uses React useState hooks
 - This version of the app supports a backend built using Node.js
 - API calls are made using the axios library
-- Authentication and private routing 
+- Authentication and private routing utilize encrypted JSON web tokens
